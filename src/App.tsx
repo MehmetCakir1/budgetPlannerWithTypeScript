@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux"
+import AddNewExpense from "./app/features/budget/AddNewExpense"
+import Expenses from "./app/features/budget/Expenses"
+import Remaining from "./app/features/budget/Remaining"
+import Spent from "./app/features/budget/Spent"
+import TotalBudget from "./app/features/budget/TotalBudget"
+import store from "./app/store"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Provider store={store}>
+        <div>
+          <TotalBudget/>
+          <Remaining/>
+          <Spent/>
+        </div>
+        <section>
+          <Expenses/>
+        </section>
+        <section>
+          <AddNewExpense/>
+        </section>
+      </Provider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
