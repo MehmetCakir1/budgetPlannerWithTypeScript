@@ -1,12 +1,12 @@
 import { nanoid } from '@reduxjs/toolkit'
 import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addNewExpense } from './budgetSlice'
+import { addNewExpense,increaseSpentMoney} from './budgetSlice'
 import { IStateProps } from '../../interfaces/interfaces'
 
 const AddNewExpense = () => {
   const dispatch=useDispatch()
-  // const expenses=useSelector((state:IStateProps)=>state.budget.expenses)
+  const expenses=useSelector((state:IStateProps)=>state.budget.expenses)
   const [newExpense,setNewExpense]=useState("")
   const [newCost,setNewCost]=useState("")
 
@@ -23,6 +23,7 @@ const AddNewExpense = () => {
     }
     setNewExpense("")
     setNewCost("")
+    dispatch(increaseSpentMoney(newCost))
   }
   // console.log(expenses)
   // console.log(newExpense);

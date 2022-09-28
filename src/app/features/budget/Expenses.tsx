@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { IStateProps } from '../../interfaces/interfaces'
-import { deleteItem } from './budgetSlice'
+import { deleteItem ,decreaseSpentMoney} from './budgetSlice'
 import {FaTrashAlt} from "react-icons/fa"
 
 const Expenses = () => {
@@ -8,6 +8,10 @@ const Expenses = () => {
   const expenses=useSelector((state:IStateProps)=>state.budget.expenses)
 
   // console.log(expenses);
+  const removeItem=(id:string)=>{
+    dispatch(deleteItem(id))
+    expenses.find((item:any)=>item.id==id && dispatch(decreaseSpentMoney(item.cost))) 
+  }
 
 
   return (
@@ -21,7 +25,7 @@ const Expenses = () => {
               <span className='capitalize'>{expense}</span>
               <div className='flex justify-between items-center'>
               <span className='mx-5'>${cost}</span>
-              <button onClick={()=>dispatch(deleteItem(id))} className="text-slate-600 bg-transparent"><FaTrashAlt/></button>
+              <button onClick={()=>removeItem(id)} className="text-slate-600 bg-transparent"><FaTrashAlt/></button>
               </div>
             </div>
           )
