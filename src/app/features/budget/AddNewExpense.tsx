@@ -14,11 +14,13 @@ const AddNewExpense = () => {
 
   const handleAddNewExpense=(e:any)=>{
     e.preventDefault()
-    dispatch(addNewExpense({
+    if(newCost && newExpense){
+       dispatch(addNewExpense({
       id:nanoid(),
       expense:newExpense,
       cost:newCost, //formatPrice 
     }))
+    }
     setNewExpense("")
     setNewCost("")
   }
@@ -26,16 +28,17 @@ const AddNewExpense = () => {
   // console.log(newExpense);
   // console.log(newCost);
   return (
-    <form className='flex flex-col justify-center items-center' onSubmit={handleAddNewExpense}>
-      <div className='flex flex-col justify-center items-center'>
-        <label htmlFor="newexpenses">Expense</label>
-        <input type="text" id='newexpenses' name='newexpenses' value={newExpense} onChange={(e)=>setNewExpense(e.target.value)} className="border border-black"/>
+    <form className='flex flex-col justify-center items-center container m-auto' onSubmit={handleAddNewExpense}>
+      <h1 className="font-bold text-4xl text-blue-500 my-3 text-center">Add A NEW EXPENSE</h1>
+      <div className='flex flex-col justify-center items-center container my-1'>
+        <label htmlFor="newexpenses" className='text-2xl'>Expense</label>
+        <input type="text" id='newexpenses' name='newexpenses' value={newExpense} onChange={(e)=>setNewExpense(e.target.value)} className="border border-black p-1 w-full max-w-[600px]"/>
       </div>
-      <div className='flex flex-col justify-center items-center'>
-        <label htmlFor="newcost">Cost</label>
-        <input type="number" id='newcost' name='newcost' value={newCost} onChange={(e)=>setNewCost((e.target.value))} className="border border-black"/>
+      <div className='flex flex-col justify-center items-center container my-1'>
+        <label htmlFor="newcost" className='text-2xl'>Cost</label>
+        <input type="number" id='newcost' name='newcost' value={newCost} onChange={(e)=>setNewCost((e.target.value))} className="border border-black p-1 w-full max-w-[600px]"/>
       </div>
-      <button type='submit'>ADD</button>
+      <button type='submit' className='bg-cyan-800 py-1 px-9 font-bold text-white mt-3'>ADD</button>
     </form>
   )
 }

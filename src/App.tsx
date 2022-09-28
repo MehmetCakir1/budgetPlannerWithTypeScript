@@ -8,12 +8,15 @@ import store from "./app/store"
 
 const App = () => {
   return (
-    <div>
       <Provider store={store}>
-        <div className="flex gap-x-4">
-          <TotalBudget/>
-          <Remaining/>
-          <Spent/>
+        <div className="flex flex-col justify-center items-center mt-4">
+          <h1 className="font-bold text-4xl text-blue-500 my-3">MY BUDGET</h1>
+          <div className="grid lg:grid-cols-3 gap-4 container ">
+            <TotalBudget/>
+            <Remaining/>
+            <Spent/>
+          </div>
+          
         </div>
         <section>
           <Expenses/>
@@ -22,7 +25,6 @@ const App = () => {
           <AddNewExpense/>
         </section>
       </Provider>
-    </div>
   )
 }
 

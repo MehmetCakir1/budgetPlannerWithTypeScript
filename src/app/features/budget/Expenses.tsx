@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { IStateProps } from '../../interfaces/interfaces'
 import { deleteItem } from './budgetSlice'
+import {FaTrashAlt} from "react-icons/fa"
 
 const Expenses = () => {
   const dispatch=useDispatch()
@@ -10,16 +11,18 @@ const Expenses = () => {
 
 
   return (
-    <div>
-      <h1>EXPENSES</h1>
-      <section>
+    <div className='container m-auto'>
+      <h1 className="font-bold text-4xl text-blue-500 my-3 text-center">EXPENSES</h1>
+      <section className='w-full max-w-[700px] m-auto text-xl'>
         {expenses.map((item:any)=>{
           const {id,expense,cost}=item;
           return(
-            <div key={id}>
-              <span>{expense}</span>
-              <span>${cost}</span>
-              <button onClick={()=>dispatch(deleteItem(id))}>DELETE</button>
+            <div key={id} className="flex justify-between items-center p-2 border border-gray-300">
+              <span className='capitalize'>{expense}</span>
+              <div className='flex justify-between items-center'>
+              <span className='mx-5'>${cost}</span>
+              <button onClick={()=>dispatch(deleteItem(id))} className="text-slate-600 bg-transparent"><FaTrashAlt/></button>
+              </div>
             </div>
           )
         })}
