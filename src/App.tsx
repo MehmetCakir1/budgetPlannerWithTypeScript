@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <div>
+        <div className="flex gap-x-4">
           <TotalBudget/>
           <Remaining/>
           <Spent/>

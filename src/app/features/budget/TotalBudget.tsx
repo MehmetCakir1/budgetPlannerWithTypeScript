@@ -1,17 +1,30 @@
-import { useSelector } from "react-redux/es/exports"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux/es/exports"
+import { editBudget } from "./budgetSlice"
+import { IStateProps } from "../../interfaces/interfaces"
 
-type StateType={
-  state:any,
-  budget:{},
-}
+
 
 const TotalBudget = () => {
-  const total=useSelector((state:StateType)=>state.budget)
+  const dispatch=useDispatch()
+  const total=useSelector((state:IStateProps)=>state.budget.total)
+  // console.log(total)
+  const [totalBudget,setTotalBudget]=useState(total)
 
   // console.log(total)
 
+  const handleSubmit=(e:any)=>{
+    e.preventDefault()
+    dispatch(editBudget(totalBudget))
+  }
+
   return (
-    <div>mm</div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="number" placeholder="Type your budget" value={totalBudget} onChange={(e)=>setTotalBudget(e.target.value)}/>
+        <button type="submit">SAVE</button>
+      </form>
+    </div>
   )
 }
 
