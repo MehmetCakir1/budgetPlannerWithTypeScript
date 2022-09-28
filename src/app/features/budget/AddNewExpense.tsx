@@ -30,7 +30,7 @@ const AddNewExpense = () => {
   // console.log(newCost);
   return (
     <form className='flex flex-col justify-center items-center container m-auto' onSubmit={handleAddNewExpense}>
-      <h1 className="font-bold text-4xl text-blue-500 my-3 text-center">Add A NEW EXPENSE</h1>
+      <h1 className="font-bold text-4xl text-blue-500 mt-2 text-center">Add A NEW EXPENSE</h1>
       <div className='flex flex-col justify-center items-center container my-1'>
         <label htmlFor="newexpenses" className='text-2xl'>Expense</label>
         <input type="text" id='newexpenses' name='newexpenses' value={newExpense} onChange={(e)=>setNewExpense(e.target.value)} className="border border-black p-1 w-full max-w-[600px]"/>

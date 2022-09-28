@@ -17,7 +17,7 @@ const Expenses = () => {
   return (
     <div className='container m-auto'>
       <h1 className="font-bold text-4xl text-blue-500 my-3 text-center">EXPENSES</h1>
-      <section className='w-full max-w-[700px] m-auto text-xl'>
+      <section className='w-full max-w-[700px] m-auto text-xl h-[178px] overflow-y-auto'>
         {expenses.map((item:any)=>{
           const {id,expense,cost}=item;
           return(
